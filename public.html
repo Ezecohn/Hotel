@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>Hotel Argentina</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to Hotel Argentina</h1>
+      <nav>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#rooms">Rooms & Suites</a></li>
+          <li><a href="#amenities">Amenities</a></li>
+          <li><a href="#dining">Dining</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section id="about">
+        <h2>About Hotel Argentina</h2>
+        <p>Located in the heart of Buenos Aires, Hotel Argentina offers luxurious accommodations, world-class amenities, and exceptional service. Experience the best of Argentine hospitality.</p>
+      </section>
+      <section id="rooms">
+        <h2>Rooms & Suites</h2>
+        <ul>
+          <li>Deluxe Room</li>
+          <li>Executive Suite</li>
+          <li>Presidential Suite</li>
+          <li>Family Room</li>
+        </ul>
+      </section>
+      <section id="amenities">
+        <h2>Amenities</h2>
+        <ul>
+          <li>Free Wi-Fi</li>
+          <li>Swimming Pool</li>
+          <li>Spa & Wellness Center</li>
+          <li>Fitness Center</li>
+          <li>Conference Rooms</li>
+        </ul>
+      </section>
+      <section id="dining">
+        <h2>Dining</h2>
+        <p>Enjoy exquisite dining experiences at our on-site restaurants and bars:</p>
+        <ul>
+          <li>La Pampa Restaurant</li>
+          <li>Tango Bar</li>
+          <li>Café Buenos Aires</li>
+        </ul>
+      </section>
+      <section id="availability">
+        <h2>Check Availability</h2>
+        <form id="availability-form">
+          <label for="check-in">Check-in Date:</label>
+          <input type="date" id="check-in" name="check-in" required>
+      
+          <label for="check-out">Check-out Date:</label>
+          <input type="date" id="check-out" name="check-out" required>
+      
+          <button type="submit">Check Availability</button>
+        </form>
+        <div id="availability-result"></div>
+      </section>
+      <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="process-form.php" method="post">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+
+          <button type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+    <footer>
+      <p>&copy; 2023 Hotel Argentina</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('availability-form');
+          const resultDiv = document.getElementById('availability-result');
+      
+          form.addEventListener('submit', function(event) {
+            event.preventDefault();
+      
+            const checkInDate = document.getElementById('check-in').value;
+            const checkOutDate = document.getElementById('check-out').value;
+      
+            // Perform availability check (replace with your own logic)
+            const isAvailable = checkAvailability(checkInDate, checkOutDate);
+      
+            if (isAvailable) {
+              resultDiv.textContent = 'Rooms are available for the selected dates.';
+            } else {
+              resultDiv.textContent = 'Sorry, no rooms are available for the selected dates.';
+            }
+          });
+      
+          function checkAvailability(checkInDate, checkOutDate) {
+            // Replace this with your own availability check logic
+            // For demonstration purposes, we'll assume availability based on the date range
+            const currentDate = new Date().toISOString().split('T')[0];
+            return checkInDate >= currentDate && checkOutDate > checkInDate;
+          }
+        });
+      </script>
+  </body>
+</html>
